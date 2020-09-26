@@ -1,0 +1,209 @@
+body
+{
+    background-image: url(/Images/Background.png);
+    background-attachment: fixed;
+    padding: 0px;
+    margin: 0px;
+    color:white;
+}
+p
+{
+    margin: 0px;
+    padding: 0px;
+
+}
+header
+{
+    width:100%;
+    height:200px;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+ul
+{
+    padding: 0px
+}
+.top
+{
+    height: 75%;
+    display: flex;
+    align-items:center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 60px;  
+    width: 100%;
+}
+.d-f
+{
+    display: flex;
+}
+.ta-c
+{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-top: 100px;
+    overflow: hidden;
+    color:black;
+    text-transform: uppercase;
+    text-align: center;
+    animation-name: ani;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes ani {
+    from {
+        color:rgb(247, 205, 205);
+    }
+    to {
+        color: black;
+    }
+}
+
+.nav-bar
+{
+    float:left;
+    background: grey;
+    width: 25%;
+    height: 300px;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-animation: AnimationName 7s ease infinite;
+    -moz-animation: AnimationName 7s ease infinite;
+    animation: AnimationName 7s ease infinite;
+}
+.docsWrapper
+{
+    width: 75%;
+}
+.nav-bar h2
+{
+margin-left: 10px;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:74% 0%}
+    50%{background-position:27% 100%}
+    100%{background-position:74% 0%}
+  }
+  @-moz-keyframes AnimationName {
+    0%{background-position:74% 0%}
+    50%{background-position:27% 100%}
+    100%{background-position:74% 0%}
+  }
+  @keyframes AnimationName {
+    0%{background-position:74% 0%}
+    50%{background-position:27% 100%}
+    100%{background-position:74% 0%}
+  }
+.nav-bar li
+{
+display: flex;
+align-items: center;
+}  
+
+.nav-bar>ul
+{
+    margin-left: 10px;
+}
+
+.mainMenuBtn
+ {
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding:20px;
+}
+
+  
+.dropDown 
+{
+    position: relative;
+    display: inline-block;
+}
+.dropDown-menu 
+{
+    font-family: 'Roboto', sans-serif;
+    display: none;
+    background-color: black;
+    min-width: 200px;
+}
+.dropDown-menu a 
+{
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+.dropDown:hover .dropDown-menu 
+{
+    display: block;
+}
+.second_p
+{
+    margin-left: 10px;
+    font-size: 30px;
+}
+.log_reg
+{
+    display: flex;
+    font-size: 20px;
+    float: right;
+    padding-left: 1000px;
+}
+.log_reg button
+{
+    background: transparent;
+    border:0px;
+}
+.log_reg a{
+    color: whitesmoke;
+}
+.nav
+{
+    height: 25%;;
+}
+.nav
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav>ul
+{
+    display: flex;
+    width: 100%;
+    padding-left: 0px;
+}
+.nav>ul>li
+{
+padding-right: 15px;
+text-align: center;
+width: 50%;
+list-style-type: none;
+border: 1px dotted white;
+}
+.nav>ul>li:hover
+{
+    color:black;
+    background: white;
+}
+.top>img
+{
+    margin-left: 20px;
+    height: 75%;
+}
+.top_text
+{
+    margin-left: 20px;
+    display: flex;
+    align-items: baseline;
+    letter-spacing: 10px;
+}
