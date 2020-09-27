@@ -17,17 +17,18 @@ function setQuery($query){
 @mysql_select_db('gasprom') or die("Не могу подключиться к базе.");
 @mysql_query('SET NAMES utf8;');
  
+
+
+
 switch($_GET["event"]){
-  //Тут раздаем последние сообщения
+ 
   case "get":
-    //Сколько сообщений раздавать пользователям
     $max_message = 60;
     //Всего сообщений в чате
     $count = getQuery("SELECT COUNT(`id`) FROM `chat`;");
     //Максимальный ID сообщения
     $m = getQuery("SELECT MAX(id) FROM `chat` WHERE 1");
     //Удаление лишних сообщений.
-    //Если хотите, чтобы сохранялась вся история, смело сносите этот кусочек
     if($count > $max_message){
       setQuery("DELETE FROM `chat` WHERE `id`<".($m-($max_message-1)).";");
     }
@@ -53,28 +54,38 @@ switch($_GET["event"]){
   break;
  
   case "set":
-    $name = "Онлайн-помошник ГасПромБанк";
-    if (isset($_GET['help']))
+  $name = "Онлайн-помошник ГазПромБанк"; //Имя Бота
+    if($start==0) //Затычка.  Нужна проверка потверждения
     {
-      //Принимаем текст сообщения
-        $msg = "Используте клавиатуру для добавление документа или связи с работником банка! Есть вопросы? Напиши нам!";
-      //Сохраняем сообщение
+      $msg = "Для доступа к сервису идентифицируйте себя!";
+        //Сохраняем сообщение
         setQuery("INSERT INTO `chat` (`id` ,`name` ,`text` )VALUES (NULL , '".mysql_real_escape_string($name)."', '".mysql_real_escape_string($msg)."');");
-    }
-    else if (isset($_POST['sendDoc']))
-    {     
-    //Принимаем текст сообщения
-      $msg = "Должно появится модальное окно с возвожностью выбора файла и его категории!";
-    //Сохраняем сообщение
-      setQuery("INSERT INTO `chat` (`id` ,`name` ,`text` )VALUES (NULL , '".mysql_real_escape_string($name)."', '".mysql_real_escape_string($msg)."');");
-    } else 
-    {
-      //Принимаем текст сообщения
-        $msg = "Сотрудник свяжется с вами в ближайшее время";
-      //Сохраняем сообщение
-        setQuery("INSERT INTO `chat` (`id` ,`name` ,`text` )VALUES (NULL , '".mysql_real_escape_string($name)."', '".mysql_real_escape_string($msg)."');");
-    }
-
+  
+    }   
+   
+if (isset($_POST['help'])||1<2) //Закрто
+{
+  $start = 1;
+  //Принимаем текст сообщения
+    $msg = "Сервис предназначен для пользователей банка, которые заинтересованы в его услугах, но не имеют возможности лично оформить услугу. 
+    Вам необходимо загрузить свое фото и фото паспорта или же воспользоватся Веб-камерой, а также отправить специальный ключ для создания цифровой подписи на передаваемые документы!
+    Если возникнут проблемы, можно вызвать работника банка за уточнением дальнейших указаний";
+  //Сохраняем сообщение
+    setQuery("INSERT INTO `chat` (`id` ,`name` ,`text` )VALUES (NULL , '".mysql_real_escape_string($name)."', '".mysql_real_escape_string($msg)."');");
+}
+else if (isset($_POST['sendDoc']))
+{     
+//Принимаем текст сообщения
+  $msg = "Должно появится модальное окно с возвожностью выбора файла и его категории!";
+//Сохраняем сообщение
+  setQuery("INSERT INTO `chat` (`id` ,`name` ,`text` )VALUES (NULL , '".mysql_real_escape_string($name)."', '".mysql_real_escape_string($msg)."');");
+} else 
+{
+  //Принимаем текст сообщения
+    $msg = "Сотрудник свяжется с вами в ближайшее время";
+  //Сохраняем сообщение
+    setQuery("INSERT INTO `chat` (`id` ,`name` ,`text` )VALUES (NULL , '".mysql_real_escape_string($name)."', '".mysql_real_escape_string($msg)."');");
+}
 
   break;
   
